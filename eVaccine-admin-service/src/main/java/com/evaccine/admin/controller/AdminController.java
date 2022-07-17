@@ -30,17 +30,29 @@ import com.evaccine.admin.model.VaccineInfoRequest;
 import com.evaccine.admin.model.VaccineInfoResponse;
 import com.evaccine.admin.service.AdminService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @Slf4j
 @RequestMapping(ADMIN)
+@Api(value = "adminservice", description = "CRUD Operations pertaining to admin services for vaccine and country entities")
 public class AdminController {
 
 	@Autowired
 	private AdminService adminService;
 
 	@PostMapping(REGISTER_COUNTRY_INFO_MAPPING)
+	@ApiOperation(value = "Register Country Related Information", response = CountryInfoResponse.class)
+	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "Success"),
+			@ApiResponse(responseCode = "500", description = "Internal Server Error"),
+			@ApiResponse(responseCode = "400", description = "Bad Request"),
+			@ApiResponse(responseCode = "401", description = "You are not authorized to view the resource"),
+			@ApiResponse(responseCode = "403", description = "Accessing the resource you were trying to reach is forbidden"),
+			@ApiResponse(responseCode = "404", description = "The resource you were trying to reach is not found") })
 	public ResponseEntity<CountryInfoResponse> registerCountryInfo(@RequestBody CountryInfoRequest countryInfoRequest) {
 		log.info("registerCountryInfo Request : {} " + countryInfoRequest);
 		CountryInfoResponse countryInfoResponse = adminService.registerCountryInfo(countryInfoRequest);
@@ -48,6 +60,13 @@ public class AdminController {
 	}
 
 	@DeleteMapping(DEACTIVATE_COUNTRY_INFO_MAPPING)
+	@ApiOperation(value = "Delete Country Related Information based on countryCode", response = CountryInfoResponse.class)
+	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "Success"),
+			@ApiResponse(responseCode = "500", description = "Internal Server Error"),
+			@ApiResponse(responseCode = "400", description = "Bad Request"),
+			@ApiResponse(responseCode = "401", description = "You are not authorized to view the resource"),
+			@ApiResponse(responseCode = "403", description = "Accessing the resource you were trying to reach is forbidden"),
+			@ApiResponse(responseCode = "404", description = "The resource you were trying to reach is not found") })
 	public ResponseEntity<CountryInfoResponse> deleteCountryInfo(@PathVariable String countryCode) {
 		log.info("deleteCountryInfo : {} " + countryCode);
 		CountryInfoResponse countryInfoResponse = adminService.deleteCountryInfo(countryCode);
@@ -55,6 +74,13 @@ public class AdminController {
 	}
 
 	@GetMapping(FETCH_COUNTRY_INFO_MAPPING)
+	@ApiOperation(value = "Fetch Country Related Information based on countryCode", response = CountryInfoResponse.class)
+	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "Success"),
+			@ApiResponse(responseCode = "500", description = "Internal Server Error"),
+			@ApiResponse(responseCode = "400", description = "Bad Request"),
+			@ApiResponse(responseCode = "401", description = "You are not authorized to view the resource"),
+			@ApiResponse(responseCode = "403", description = "Accessing the resource you were trying to reach is forbidden"),
+			@ApiResponse(responseCode = "404", description = "The resource you were trying to reach is not found") })
 	public ResponseEntity<CountryInfoResponse> getCountryInfo(@PathVariable String countryCode) {
 		log.info("getCountryInfo : {}", countryCode);
 		CountryInfoResponse countryInfoResponse = adminService.fetchCountryInfo(countryCode);
@@ -62,6 +88,13 @@ public class AdminController {
 	}
 
 	@PutMapping(UPDATE_COUNTRY_INFO_MAPPING)
+	@ApiOperation(value = "Update Country Related Information", response = CountryInfoResponse.class)
+	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "Success"),
+			@ApiResponse(responseCode = "500", description = "Internal Server Error"),
+			@ApiResponse(responseCode = "400", description = "Bad Request"),
+			@ApiResponse(responseCode = "401", description = "You are not authorized to view the resource"),
+			@ApiResponse(responseCode = "403", description = "Accessing the resource you were trying to reach is forbidden"),
+			@ApiResponse(responseCode = "404", description = "The resource you were trying to reach is not found") })
 	public ResponseEntity<CountryInfoResponse> updateCountryInfo(@RequestBody CountryInfoRequest countryInfoRequest) {
 		log.info("updateCountryInfo Request : {}", countryInfoRequest);
 		CountryInfoResponse countryInfoResponse = adminService.updateCountryInfo(countryInfoRequest);
@@ -69,6 +102,13 @@ public class AdminController {
 	}
 
 	@PostMapping(REGISTER_VACCINE_INFO_MAPPING)
+	@ApiOperation(value = "Register Vaccine Related Information", response = VaccineInfoResponse.class)
+	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "Success"),
+			@ApiResponse(responseCode = "500", description = "Internal Server Error"),
+			@ApiResponse(responseCode = "400", description = "Bad Request"),
+			@ApiResponse(responseCode = "401", description = "You are not authorized to view the resource"),
+			@ApiResponse(responseCode = "403", description = "Accessing the resource you were trying to reach is forbidden"),
+			@ApiResponse(responseCode = "404", description = "The resource you were trying to reach is not found") })
 	public ResponseEntity<VaccineInfoResponse> registerVaccineInfo(@RequestBody VaccineInfoRequest vaccineInfoRequest) {
 		log.info("registerVaccineInfo Request : {} " + vaccineInfoRequest);
 		VaccineInfoResponse vaccineInfoResponse = adminService.registerVaccineInfo(vaccineInfoRequest);
@@ -76,6 +116,13 @@ public class AdminController {
 	}
 
 	@PutMapping(UPDATE_VACCINE_INFO_MAPPING)
+	@ApiOperation(value = "Update Vaccine Related Information", response = VaccineInfoResponse.class)
+	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "Success"),
+			@ApiResponse(responseCode = "500", description = "Internal Server Error"),
+			@ApiResponse(responseCode = "400", description = "Bad Request"),
+			@ApiResponse(responseCode = "401", description = "You are not authorized to view the resource"),
+			@ApiResponse(responseCode = "403", description = "Accessing the resource you were trying to reach is forbidden"),
+			@ApiResponse(responseCode = "404", description = "The resource you were trying to reach is not found") })
 	public ResponseEntity<VaccineInfoResponse> updateVaccineInfo(@RequestBody VaccineInfoRequest vaccineInfoRequest) {
 		log.info("updateVaccineInfo Request : {} " + vaccineInfoRequest);
 		VaccineInfoResponse vaccineInfoResponse = adminService.updateVaccineInfo(vaccineInfoRequest);
@@ -83,6 +130,13 @@ public class AdminController {
 	}
 
 	@DeleteMapping(DEACTIVATE_VACCINE_INFO_MAPPING)
+	@ApiOperation(value = "Delete Vaccine Related Information", response = VaccineInfoResponse.class)
+	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "Success"),
+			@ApiResponse(responseCode = "500", description = "Internal Server Error"),
+			@ApiResponse(responseCode = "400", description = "Bad Request"),
+			@ApiResponse(responseCode = "401", description = "You are not authorized to view the resource"),
+			@ApiResponse(responseCode = "403", description = "Accessing the resource you were trying to reach is forbidden"),
+			@ApiResponse(responseCode = "404", description = "The resource you were trying to reach is not found") })
 	public ResponseEntity<VaccineInfoResponse> deleteVaccineInfo(@RequestBody VaccineInfoRequest vaccineInfoRequest) {
 		log.info("deleteVaccineInfo Request : {} " + vaccineInfoRequest);
 		VaccineInfoResponse vaccineInfoResponse = adminService.deleteVaccineInfo(vaccineInfoRequest);
@@ -90,6 +144,13 @@ public class AdminController {
 	}
 
 	@GetMapping(FETCH_VACCINE_INFO_MAPPING)
+	@ApiOperation(value = "Fetch Vaccine Related Information based on countryCode and pincode", response = List.class)
+	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "Success"),
+			@ApiResponse(responseCode = "500", description = "Internal Server Error"),
+			@ApiResponse(responseCode = "400", description = "Bad Request"),
+			@ApiResponse(responseCode = "401", description = "You are not authorized to view the resource"),
+			@ApiResponse(responseCode = "403", description = "Accessing the resource you were trying to reach is forbidden"),
+			@ApiResponse(responseCode = "404", description = "The resource you were trying to reach is not found") })
 	public ResponseEntity<List<VaccineInfoResponse>> getVaccineInfo(@PathVariable String countryCode,
 			@PathVariable String pincode) {
 		log.info("getVaccineInfo : {} , {}  ", countryCode, pincode);
