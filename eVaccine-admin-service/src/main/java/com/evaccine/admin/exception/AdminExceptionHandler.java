@@ -19,35 +19,37 @@ import lombok.extern.slf4j.Slf4j;
 public class AdminExceptionHandler {
 
 	@ExceptionHandler(IllegalArgumentException.class)
-	public ResponseEntity<BaseResponse> handleIllegalArguementException(IllegalArgumentException ex) {
-		log.error("inside handleIllegalArguementException : {} ", ex.getMessage());
-		BaseResponse baseResponse = prepareResponseErrorObject(ex.getMessage(), HttpStatus.BAD_REQUEST, null);
+	public ResponseEntity<BaseResponse> handleIllegalArguementException(final IllegalArgumentException exception) {
+		log.error("inside handleIllegalArguementException : {} ", exception.getMessage());
+		BaseResponse baseResponse = prepareResponseErrorObject(exception.getMessage(), HttpStatus.BAD_REQUEST, null);
 		return new ResponseEntity<>(baseResponse, HttpStatus.BAD_REQUEST);
 	}
 
 	@ExceptionHandler(MissingServletRequestParameterException.class)
 	public ResponseEntity<BaseResponse> handleMissingServletRequestParameterException(
-			MissingServletRequestParameterException ex) {
-		log.error("inside handleMissingServletRequestParameterException : {} ", ex.getMessage());
-		BaseResponse baseResponse = prepareResponseErrorObject(ex.getMessage(), HttpStatus.BAD_REQUEST, null);
+			final MissingServletRequestParameterException exception) {
+		log.error("inside handleMissingServletRequestParameterException : {} ", exception.getMessage());
+		BaseResponse baseResponse = prepareResponseErrorObject(exception.getMessage(), HttpStatus.BAD_REQUEST, null);
 		return new ResponseEntity<>(baseResponse, HttpStatus.BAD_REQUEST);
 	}
 
 	@ExceptionHandler(InvalidFormatException.class)
-	public ResponseEntity<BaseResponse> handleHttpMessageNotReadableException(InvalidFormatException ex) {
-		log.error("inside handleHttpMessageNotReadableException : {} ", ex.getMessage());
-		BaseResponse baseResponse = prepareResponseErrorObject(ex.getMessage(), HttpStatus.BAD_REQUEST, null);
+	public ResponseEntity<BaseResponse> handleHttpMessageNotReadableException(final InvalidFormatException exception) {
+		log.error("inside handleHttpMessageNotReadableException : {} ", exception.getMessage());
+		BaseResponse baseResponse = prepareResponseErrorObject(exception.getMessage(), HttpStatus.BAD_REQUEST, null);
 		return new ResponseEntity<>(baseResponse, HttpStatus.BAD_REQUEST);
 	}
 
 	@ExceptionHandler(NullPointerException.class)
-	public ResponseEntity<BaseResponse> handleNullPointerException(NullPointerException ex) {
-		log.error("inside handleNullPointerException : {} ", ex.getMessage());
-		BaseResponse baseResponse = prepareResponseErrorObject(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR, null);
+	public ResponseEntity<BaseResponse> handleNullPointerException(final NullPointerException exception) {
+		log.error("inside handleNullPointerException : {} ", exception.getMessage());
+		BaseResponse baseResponse = prepareResponseErrorObject(exception.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR,
+				null);
 		return new ResponseEntity<>(baseResponse, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
-	private BaseResponse prepareResponseErrorObject(String message, HttpStatus httpStatus, List<String> errorsList) {
+	private BaseResponse prepareResponseErrorObject(final String message, final HttpStatus httpStatus,
+			final List<String> errorsList) {
 
 		BaseResponse baseResponse = new BaseResponse();
 		baseResponse.setMessage(message);

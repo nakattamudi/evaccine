@@ -51,9 +51,10 @@ public class AdminController {
 			@ApiResponse(responseCode = "500", description = "Internal Server Error"),
 			@ApiResponse(responseCode = "400", description = "Bad Request"),
 			@ApiResponse(responseCode = "401", description = "You are not authorized to view the resource"),
-			@ApiResponse(responseCode = "403", description = "Accessing the resource you were trying to reach is forbidden"),
+			@ApiResponse(responseCode = "403", description = "Access forbidden"),
 			@ApiResponse(responseCode = "404", description = "The resource you were trying to reach is not found") })
-	public ResponseEntity<CountryInfoResponse> registerCountryInfo(@RequestBody CountryInfoRequest countryInfoRequest) {
+	public ResponseEntity<CountryInfoResponse> registerCountryInfo(
+			@RequestBody final CountryInfoRequest countryInfoRequest) {
 		log.info("registerCountryInfo Request : {} " + countryInfoRequest);
 		CountryInfoResponse countryInfoResponse = adminService.registerCountryInfo(countryInfoRequest);
 		return new ResponseEntity<>(countryInfoResponse, HttpStatus.OK);
@@ -65,9 +66,9 @@ public class AdminController {
 			@ApiResponse(responseCode = "500", description = "Internal Server Error"),
 			@ApiResponse(responseCode = "400", description = "Bad Request"),
 			@ApiResponse(responseCode = "401", description = "You are not authorized to view the resource"),
-			@ApiResponse(responseCode = "403", description = "Accessing the resource you were trying to reach is forbidden"),
+			@ApiResponse(responseCode = "403", description = "Access forbidden"),
 			@ApiResponse(responseCode = "404", description = "The resource you were trying to reach is not found") })
-	public ResponseEntity<CountryInfoResponse> deleteCountryInfo(@PathVariable String countryCode) {
+	public ResponseEntity<CountryInfoResponse> deleteCountryInfo(@PathVariable final String countryCode) {
 		log.info("deleteCountryInfo : {} " + countryCode);
 		CountryInfoResponse countryInfoResponse = adminService.deleteCountryInfo(countryCode);
 		return new ResponseEntity<>(countryInfoResponse, HttpStatus.OK);
@@ -79,9 +80,9 @@ public class AdminController {
 			@ApiResponse(responseCode = "500", description = "Internal Server Error"),
 			@ApiResponse(responseCode = "400", description = "Bad Request"),
 			@ApiResponse(responseCode = "401", description = "You are not authorized to view the resource"),
-			@ApiResponse(responseCode = "403", description = "Accessing the resource you were trying to reach is forbidden"),
+			@ApiResponse(responseCode = "403", description = "Access forbidden"),
 			@ApiResponse(responseCode = "404", description = "The resource you were trying to reach is not found") })
-	public ResponseEntity<CountryInfoResponse> getCountryInfo(@PathVariable String countryCode) {
+	public ResponseEntity<CountryInfoResponse> getCountryInfo(@PathVariable final String countryCode) {
 		log.info("getCountryInfo : {}", countryCode);
 		CountryInfoResponse countryInfoResponse = adminService.fetchCountryInfo(countryCode);
 		return new ResponseEntity<>(countryInfoResponse, HttpStatus.OK);
@@ -93,9 +94,10 @@ public class AdminController {
 			@ApiResponse(responseCode = "500", description = "Internal Server Error"),
 			@ApiResponse(responseCode = "400", description = "Bad Request"),
 			@ApiResponse(responseCode = "401", description = "You are not authorized to view the resource"),
-			@ApiResponse(responseCode = "403", description = "Accessing the resource you were trying to reach is forbidden"),
+			@ApiResponse(responseCode = "403", description = "Access forbidden"),
 			@ApiResponse(responseCode = "404", description = "The resource you were trying to reach is not found") })
-	public ResponseEntity<CountryInfoResponse> updateCountryInfo(@RequestBody CountryInfoRequest countryInfoRequest) {
+	public ResponseEntity<CountryInfoResponse> updateCountryInfo(
+			@RequestBody final CountryInfoRequest countryInfoRequest) {
 		log.info("updateCountryInfo Request : {}", countryInfoRequest);
 		CountryInfoResponse countryInfoResponse = adminService.updateCountryInfo(countryInfoRequest);
 		return new ResponseEntity<>(countryInfoResponse, HttpStatus.OK);
@@ -107,9 +109,10 @@ public class AdminController {
 			@ApiResponse(responseCode = "500", description = "Internal Server Error"),
 			@ApiResponse(responseCode = "400", description = "Bad Request"),
 			@ApiResponse(responseCode = "401", description = "You are not authorized to view the resource"),
-			@ApiResponse(responseCode = "403", description = "Accessing the resource you were trying to reach is forbidden"),
+			@ApiResponse(responseCode = "403", description = "Access forbidden"),
 			@ApiResponse(responseCode = "404", description = "The resource you were trying to reach is not found") })
-	public ResponseEntity<VaccineInfoResponse> registerVaccineInfo(@RequestBody VaccineInfoRequest vaccineInfoRequest) {
+	public ResponseEntity<VaccineInfoResponse> registerVaccineInfo(
+			@RequestBody final VaccineInfoRequest vaccineInfoRequest) {
 		log.info("registerVaccineInfo Request : {} " + vaccineInfoRequest);
 		VaccineInfoResponse vaccineInfoResponse = adminService.registerVaccineInfo(vaccineInfoRequest);
 		return new ResponseEntity<>(vaccineInfoResponse, HttpStatus.OK);
@@ -121,9 +124,10 @@ public class AdminController {
 			@ApiResponse(responseCode = "500", description = "Internal Server Error"),
 			@ApiResponse(responseCode = "400", description = "Bad Request"),
 			@ApiResponse(responseCode = "401", description = "You are not authorized to view the resource"),
-			@ApiResponse(responseCode = "403", description = "Accessing the resource you were trying to reach is forbidden"),
+			@ApiResponse(responseCode = "403", description = "Access forbidden"),
 			@ApiResponse(responseCode = "404", description = "The resource you were trying to reach is not found") })
-	public ResponseEntity<VaccineInfoResponse> updateVaccineInfo(@RequestBody VaccineInfoRequest vaccineInfoRequest) {
+	public ResponseEntity<VaccineInfoResponse> updateVaccineInfo(
+			@RequestBody final VaccineInfoRequest vaccineInfoRequest) {
 		log.info("updateVaccineInfo Request : {} " + vaccineInfoRequest);
 		VaccineInfoResponse vaccineInfoResponse = adminService.updateVaccineInfo(vaccineInfoRequest);
 		return new ResponseEntity<>(vaccineInfoResponse, HttpStatus.OK);
@@ -135,9 +139,10 @@ public class AdminController {
 			@ApiResponse(responseCode = "500", description = "Internal Server Error"),
 			@ApiResponse(responseCode = "400", description = "Bad Request"),
 			@ApiResponse(responseCode = "401", description = "You are not authorized to view the resource"),
-			@ApiResponse(responseCode = "403", description = "Accessing the resource you were trying to reach is forbidden"),
+			@ApiResponse(responseCode = "403", description = "Access forbidden"),
 			@ApiResponse(responseCode = "404", description = "The resource you were trying to reach is not found") })
-	public ResponseEntity<VaccineInfoResponse> deleteVaccineInfo(@RequestBody VaccineInfoRequest vaccineInfoRequest) {
+	public ResponseEntity<VaccineInfoResponse> deleteVaccineInfo(
+			@RequestBody final VaccineInfoRequest vaccineInfoRequest) {
 		log.info("deleteVaccineInfo Request : {} " + vaccineInfoRequest);
 		VaccineInfoResponse vaccineInfoResponse = adminService.deleteVaccineInfo(vaccineInfoRequest);
 		return new ResponseEntity<>(vaccineInfoResponse, HttpStatus.OK);
@@ -149,10 +154,10 @@ public class AdminController {
 			@ApiResponse(responseCode = "500", description = "Internal Server Error"),
 			@ApiResponse(responseCode = "400", description = "Bad Request"),
 			@ApiResponse(responseCode = "401", description = "You are not authorized to view the resource"),
-			@ApiResponse(responseCode = "403", description = "Accessing the resource you were trying to reach is forbidden"),
+			@ApiResponse(responseCode = "403", description = "Access forbidden"),
 			@ApiResponse(responseCode = "404", description = "The resource you were trying to reach is not found") })
-	public ResponseEntity<List<VaccineInfoResponse>> getVaccineInfo(@PathVariable String countryCode,
-			@PathVariable String pincode) {
+	public ResponseEntity<List<VaccineInfoResponse>> getVaccineInfo(@PathVariable final String countryCode,
+			@PathVariable final String pincode) {
 		log.info("getVaccineInfo : {} , {}  ", countryCode, pincode);
 		List<VaccineInfoResponse> countryInfoResponseList = adminService.fetchVaccineInfo(countryCode, pincode);
 		return new ResponseEntity<>(countryInfoResponseList, HttpStatus.OK);

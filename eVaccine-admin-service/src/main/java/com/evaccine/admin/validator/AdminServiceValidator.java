@@ -30,7 +30,7 @@ import com.evaccine.admin.model.VaccineInfoRequest;
 @Component
 public class AdminServiceValidator {
 
-	public boolean validateCountryInfo(CountryInfoRequest countryInfoRequest) {
+	public boolean validateCountryInfo(final CountryInfoRequest countryInfoRequest) {
 
 		Assert.isTrue(StringUtils.isNotBlank(countryInfoRequest.getCountryName()), COUNTRY_NAME_MANDATORY);
 		Assert.isTrue(countryInfoRequest.getCountryName().length() < MAX_ALLOWED_COUNTRY_NAME_LENGTH,
@@ -45,7 +45,8 @@ public class AdminServiceValidator {
 		return true;
 	}
 
-	public boolean validateVaccineInfo(VaccineInfoRequest vaccineInfoRequest, boolean isCreateVaccineRequest) {
+	public boolean validateVaccineInfo(final VaccineInfoRequest vaccineInfoRequest,
+			final boolean isCreateVaccineRequest) {
 		Assert.isTrue(StringUtils.isNotBlank(vaccineInfoRequest.getVaccineName()), VACCINE_NAME_MANDATORY);
 		Assert.isTrue(vaccineInfoRequest.getVaccineName().length() < MAX_ALLOWED_VACCINE_NAME_LENGTH,
 				VACCINE_NAME_MAX_LENGTH_MESSAGE);

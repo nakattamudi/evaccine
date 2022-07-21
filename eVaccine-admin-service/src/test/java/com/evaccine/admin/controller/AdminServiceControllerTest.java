@@ -84,8 +84,8 @@ public class AdminServiceControllerTest {
 	public void fetchCountryInfo() throws Exception {
 		mockFetchCountryInfoResponseForValidData();
 		mockMvc.perform(get("/admin/fetch/country/IND").with(csrf())).andExpect(status().is2xxSuccessful())
-				.andExpect(content().string(
-						"{\"httpStatus\":\"OK\",\"countryName\":\"INDIA\",\"countryCode\":\"IND\",\"pincodes\":[\"123456\",\"232323\"],\"countryStatus\":\"ACTIVE\"}"));
+				.andExpect(content().string("{\"httpStatus\":\"OK\",\"countryName\":\"INDIA\",\"countryCode\":\"IND\","
+						+ "\"pincodes\":[\"123456\",\"232323\"],\"countryStatus\":\"ACTIVE\"}"));
 	}
 
 	@Test
@@ -129,8 +129,9 @@ public class AdminServiceControllerTest {
 	public void fetchVaccineInfo() throws Exception {
 		mockFetchVaccineInfoResponseForValidData();
 		mockMvc.perform(get("/admin/fetch/vaccine_info/IND/1233").with(csrf())).andExpect(status().is2xxSuccessful())
-				.andExpect(content().string(
-						"[{\"vaccineName\":\"COVAXIN\",\"hospitalName\":\"ICON\",\"hospitalPincode\":\"1233\",\"countryCode\":\"IND\"},{\"vaccineName\":\"FIZER\",\"hospitalName\":\"ICON\"}]"));
+				.andExpect(content()
+						.string("[{\"vaccineName\":\"COVAXIN\",\"hospitalName\":\"ICON\",\"hospitalPincode\":\"1233\","
+								+ "\"countryCode\":\"IND\"},{\"vaccineName\":\"FIZER\",\"hospitalName\":\"ICON\"}]"));
 	}
 
 	private void mockRegisterCountryInfoResponseForValidData() {

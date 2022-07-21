@@ -1,7 +1,6 @@
 package com.evaccine.admin.constants;
 
 public class AdminServiceConstants {
-
 	public static final String ADMIN = "admin";
 	public static final String REGISTER_COUNTRY_INFO_MAPPING = "register/country_info";
 	public static final String REGISTER_VACCINE_INFO_MAPPING = "register/vaccine_info";
@@ -35,9 +34,11 @@ public class AdminServiceConstants {
 	public static final String VACCINE_UPDATE_SUCCESS_MESSAGE = "Vaccine Details Updated Successfully";
 	public static final String VACCINE_NAME_MANDATORY = "vaccineName is Mandatory";
 	public static final String HOSPITAL_NAME_MANDATORY = "hospitalName is Mandatory";
-	public static final String MAX_APPLICABLE_DOSES_MANDATORY = "maxApplicableDoses is Mandatory and should be >0 and <=100";
+	public static final String MAX_APPLICABLE_DOSES_MANDATORY = "maxApplicableDoses is Mandatory "
+			+ "and should be >0 and <=100";
 	public static final String MAX_APPLICABLE_DOSES_LIMIT_EXCEED_MESSAGE = "maxApplicableDoses should be <100";
-	public static final String MIN_DIFFERENCE_NEEDED_MANDATORY = "minDaysDifferenceNeeded is Mandatory and should be >0 and <=1000";
+	public static final String MIN_DIFFERENCE_NEEDED_MANDATORY = "minDaysDifferenceNeeded is Mandatory "
+			+ "and should be >0 and <=1000";
 	public static final String MIN_DIFFERENCE_NEEDED_LIMIT_EXCEED_MESSAGE = "minDaysDifferenceNeeded should be <=1000";
 	public static final String HOSPITAL_STATUS_MANDATORY = "hospitalStatus is Mandatory";
 	public static final String HOSPITAL_PINCODE_STATUS_MANDATORY = "hospitalPincode is Mandatory";
