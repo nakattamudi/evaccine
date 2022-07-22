@@ -136,7 +136,6 @@
 							<encoding>UTF-8</encoding>
 							<failsOnError>true</failsOnError>
 							<includeTestSourceDirectory>true</includeTestSourceDirectory>
-							<linkXRef>false</linkXRef>
 						</configuration>
 						<goals>
 							<goal>check</goal>
