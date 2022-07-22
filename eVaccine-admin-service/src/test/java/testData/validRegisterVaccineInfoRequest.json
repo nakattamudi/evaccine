@@ -1,9 +1,9 @@
 {
-    "vaccineName": "COVAXIN",
-    "maxApplicableDoses": 10,
-    "MinDaysDifferenceNeeded": 24,
-    "hospitalName": "ICON",
-    "hospitalPincode": 23213,
-    "countryCode": "sf3",
-    "hospitalStatus": "ACTIVE"
+  "vaccineName": "COVAXIN",
+  "maxApplicableDoses": 10,
+  "MinDaysDifferenceNeeded": 24,
+  "hospitalName": "ICON",
+  "hospitalPincode": 23213,
+  "countryCode": "sf3",
+  "hospitalStatus": "ACTIVE"
 }
