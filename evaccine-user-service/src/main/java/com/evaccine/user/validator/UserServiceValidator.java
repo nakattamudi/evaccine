@@ -46,7 +46,7 @@ public class UserServiceValidator {
                 MOBILE_NUMBER_INVALID_MESSAGE);
 
         Assert.isTrue(StringUtils.isNotBlank(userRegisterRequest.getCountryCode()), COUNTRY_CODE_MANDATORY);
-        Assert.isTrue(userRegisterRequest.getCountryCode().length() < MAX_ALLOWED_COUNTRY_CODE_LENGTH,
+        Assert.isTrue(userRegisterRequest.getCountryCode().length() <= MAX_ALLOWED_COUNTRY_CODE_LENGTH,
                 COUNTRY_CODE_MAX_LENGTH_MESSAGE);
         return true;
     }

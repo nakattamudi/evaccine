@@ -8,6 +8,7 @@ import static org.mockito.Mockito.when;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -64,7 +65,7 @@ public class UserServiceControllerTest {
 
         var requestBody = TestUtil.readFile("src/test/java/testData/updateUser.json");
         mockUpdateUserInfoResponseForValidData();
-        mockMvc.perform(post("/user/update").with(csrf()).contentType(MediaType.APPLICATION_JSON)
+        mockMvc.perform(put("/user/update").with(csrf()).contentType(MediaType.APPLICATION_JSON)
                         .content(String.valueOf(requestBody))).andExpect(status().is2xxSuccessful())
                 .andExpect(content()
                         .string("{\"message\":\"User Details Updated Successfully\",\"httpStatus\":\"OK\"}"));

@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ebd25e7-24e0-44cd-9ab4-e767eceb9f8f" name="Changes" comment="Code formatting and imports reorganised">
-      <change afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.checkstyle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../evaccine-user-service/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../evaccine-user-service/.idea/workspace.xml" beforeDir="false" />
+    <list default="true" id="3ebd25e7-24e0-44cd-9ab4-e767eceb9f8f" name="Changes" comment="junk stuff exclusions">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../evaccine-user-service/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../evaccine-user-service/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../evaccine-user-service/src/main/java/com/evaccine/user/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../evaccine-user-service/src/main/java/com/evaccine/user/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../evaccine-user-service/src/main/java/com/evaccine/user/validator/UserServiceValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../evaccine-user-service/src/main/java/com/evaccine/user/validator/UserServiceValidator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

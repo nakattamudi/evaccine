@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,7 +42,7 @@ public class UserServiceController {
         return new ResponseEntity<>(userRegisterResponse, HttpStatus.OK);
     }
 
-    @PostMapping(UPDATE_USER_INFO_MAPPING)
+    @PutMapping(UPDATE_USER_INFO_MAPPING)
     public ResponseEntity<UserRegisterResponse> updateUserDetails(@RequestBody final UserRegisterRequest userDetailsRequest) {
         log.info("updateUserDetails : userDetailsRequest : {} ", userDetailsRequest);
         UserRegisterResponse userRegisterResponse = userService.updateUserDetails(userDetailsRequest);
