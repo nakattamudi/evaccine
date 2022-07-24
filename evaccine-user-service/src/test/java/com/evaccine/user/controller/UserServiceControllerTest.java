@@ -3,6 +3,7 @@ package com.evaccine.user.controller;
 import static com.evaccine.user.constants.UserServiceConstants.FETCH_USER_DETAILS_SUCCESS_MESSAGE;
 import static com.evaccine.user.constants.UserServiceConstants.USER_DETAILS_REGISTER_SUCCESS_MESSAGE;
 import static com.evaccine.user.constants.UserServiceConstants.USER_DETAILS_UPDATE_SUCCESS_MESSAGE;
+import static com.evaccine.user.constants.UserServiceConstants.USER_REGISTER_FOR_VACCINATION_SUCCESS_MESSAGE;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
@@ -19,6 +20,7 @@ import com.evaccine.user.TestUtil;
 import com.evaccine.user.model.UserRegisterRequest;
 import com.evaccine.user.model.UserRegisterResponse;
 import com.evaccine.user.model.UserVaccineInfoResponse;
+import com.evaccine.user.model.VaccineRegisterRequest;
 import com.evaccine.user.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,6 +86,27 @@ public class UserServiceControllerTest {
                         .string("[{\"vaccineName\":\"COVAXIN\",\"hospitalName\":\"ICON\",\"hospitalPincode\":\"1233\","
                                 + "\"countryCode\":\"IND\"},{\"vaccineName\":\"FIZER\",\"hospitalName\":\"ICON\","
                                 + "\"hospitalPincode\":\"1233\",\"countryCode\":\"IND\"}]"));
+    }
+
+
+    @Test
+    @WithMockUser
+    public void registerUserForVaccination() throws Exception {
+
+        var requestBody = TestUtil.readFile("src/test/java/testData/registerUserForVaccination.json");
+        mockRegisterUserForVaccinationValidData();
+        mockMvc.perform(post("/user/register/vaccination").with(csrf()).contentType(MediaType.APPLICATION_JSON)
+                        .content(String.valueOf(requestBody))).andExpect(status().is2xxSuccessful())
+                .andExpect(content()
+                        .string("{\"message\":\"User Registered for Vaccination Successfully\",\"httpStatus\":\"OK\"}"));
+    }
+
+    private void mockRegisterUserForVaccinationValidData() {
+
+        UserRegisterResponse userRegisterResponse = new UserRegisterResponse();
+        userRegisterResponse.setMessage(USER_REGISTER_FOR_VACCINATION_SUCCESS_MESSAGE);
+        userRegisterResponse.setHttpStatus(HttpStatus.OK);
+        when(userService.vaccineRegisterRequest(any(VaccineRegisterRequest.class))).thenReturn(userRegisterResponse);
     }
 
     private void mockRegisterUserInfoResponseForValidData() {

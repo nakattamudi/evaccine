@@ -2,6 +2,7 @@ package com.evaccine.user.controller;
 
 import static com.evaccine.user.constants.UserServiceConstants.FETCH_USER_INFO_MAPPING;
 import static com.evaccine.user.constants.UserServiceConstants.FETCH_VACCINE_INFO_MAPPING;
+import static com.evaccine.user.constants.UserServiceConstants.REGISTER_USER_FOR_VACCINATION;
 import static com.evaccine.user.constants.UserServiceConstants.REGISTER_USER_INFO_MAPPING;
 import static com.evaccine.user.constants.UserServiceConstants.UPDATE_USER_INFO_MAPPING;
 import static com.evaccine.user.constants.UserServiceConstants.USER;
@@ -11,6 +12,7 @@ import java.util.List;
 import com.evaccine.user.model.UserRegisterRequest;
 import com.evaccine.user.model.UserRegisterResponse;
 import com.evaccine.user.model.UserVaccineInfoResponse;
+import com.evaccine.user.model.VaccineRegisterRequest;
 import com.evaccine.user.service.UserService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -69,6 +71,13 @@ public class UserServiceController {
         log.info("getVaccineInfo : {} , {}  ", countryCode, pincode);
         List<UserVaccineInfoResponse> countryInfoResponseList = userService.fetchVaccineInfo(countryCode, pincode);
         return new ResponseEntity<>(countryInfoResponseList, HttpStatus.OK);
+    }
+    @PostMapping(REGISTER_USER_FOR_VACCINATION)
+    public ResponseEntity<UserRegisterResponse> registerUserForVaccination(
+            @RequestBody final VaccineRegisterRequest vaccineRegisterRequest) {
+        log.info("registerUserForVaccination : userDetailsRequest : {} ", vaccineRegisterRequest);
+        UserRegisterResponse userRegisterResponse = userService.vaccineRegisterRequest(vaccineRegisterRequest);
+        return new ResponseEntity<>(userRegisterResponse, HttpStatus.OK);
     }
 
 }

@@ -50,6 +50,21 @@ public class UserEntity {
     @Column(name = "country_code", nullable = false)
     private String countryCode;
 
+    @Column(name = "vaccine_name")
+    private String vaccineName;
+
+    @Column(name = "hospital_pincode")
+    private String hospitalPincode;
+
+    @Column(name = "hospital_name")
+    private String hospitalName;
+
+    @Column(name = "dosage_number")
+    private int dosageNumber;
+
+    @Column(name = "vaccine_reg_date")
+    private LocalDateTime vaccineRegistrationDate;
+
     @CreatedBy
     @Column(name = "created_by", nullable = false, updatable = false)
     private String createdBy;

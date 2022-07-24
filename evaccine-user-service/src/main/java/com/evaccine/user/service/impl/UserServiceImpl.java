@@ -7,6 +7,7 @@ import static com.evaccine.user.constants.UserServiceConstants.PIN_CODE_MANDATOR
 import static com.evaccine.user.constants.UserServiceConstants.USER;
 import static com.evaccine.user.constants.UserServiceConstants.USER_DETAILS_REGISTER_SUCCESS_MESSAGE;
 import static com.evaccine.user.constants.UserServiceConstants.USER_DETAILS_UPDATE_SUCCESS_MESSAGE;
+import static com.evaccine.user.constants.UserServiceConstants.USER_REGISTER_FOR_VACCINATION_SUCCESS_MESSAGE;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ import com.evaccine.user.entity.VaccineInfoEntity;
 import com.evaccine.user.model.UserRegisterRequest;
 import com.evaccine.user.model.UserRegisterResponse;
 import com.evaccine.user.model.UserVaccineInfoResponse;
+import com.evaccine.user.model.VaccineRegisterRequest;
 import com.evaccine.user.repository.UserEntityRepository;
 import com.evaccine.user.repository.VaccineInfoRepository;
 import com.evaccine.user.service.UserService;
@@ -86,6 +88,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public UserRegisterResponse vaccineRegisterRequest(final VaccineRegisterRequest vaccineRegisterRequest) {
+
+        userServiceValidator.validateVaccineRegisterRequest(vaccineRegisterRequest);
+        UserRegisterResponse userRegisterResponse = new UserRegisterResponse();
+        userRegisterResponse.setHttpStatus(HttpStatus.OK);
+        userRegisterResponse.setMessage(USER_REGISTER_FOR_VACCINATION_SUCCESS_MESSAGE);
+        return userRegisterResponse;
+    }
+
+    @Override
     public List<UserVaccineInfoResponse> fetchVaccineInfo(final String countryCode, final String pincode) {
         log.info("fetchVaccineInfo Request Received for :{}", countryCode);
         Assert.isTrue(StringUtils.isNotBlank(countryCode), COUNTRY_CODE_MANDATORY);
@@ -102,7 +114,7 @@ public class UserServiceImpl implements UserService {
                 vaccineInfoResponseList.add(vaccineInfoResponse);
             }
         } else {
-            log.info("No Details found for given countryCode {} and pincode {}:", countryCode, pincode);
+            log.info("No Details found for given countryCode {} and pincode {}", countryCode, pincode);
         }
         return vaccineInfoResponseList;
     }

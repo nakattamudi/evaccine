@@ -7,6 +7,8 @@ public class UserServiceConstants {
     public static final String FETCH_USER_INFO_MAPPING = "fetch/{aadhar}";
     public static final String UPDATE_USER_INFO_MAPPING = "update";
     public static final String FETCH_VACCINE_INFO_MAPPING = "fetch/vaccine_info/{countryCode}/{pincode}";
+
+    public static final String REGISTER_USER_FOR_VACCINATION = "register/vaccination";
     public static final int MAX_ALLOWED_USERNAME_LENGTH = 50;
     public static final int MAX_ALLOWED_COUNTRY_CODE_LENGTH = 3;
     public static final String USER_NAME_MANDATORY = "userName is Mandatory";
@@ -22,12 +24,27 @@ public class UserServiceConstants {
     public static final String MOBILE_NUMBER_PATTERN = "^[1-9]{1}[0-9]{9}$";
     public static final String MOBILE_NUMBER_INVALID_MESSAGE = "Invalid mobileNumber provided.Please check";
     public static final String COUNTRY_CODE_MANDATORY = "countryCode is Mandatory";
+    public static final String DOSAGE_NUMBER_MANDATORY = "dosageNumber is Mandatory";
     public static final String PIN_CODE_MANDATORY = "pincode is Mandatory";
+    public static final String VACCINE_NAME_MANDATORY = "vaccineName is Mandatory";
+    public static final String HOSPITAL_NAME_MANDATORY = "hospitalName is Mandatory";
+
     public static final String COUNTRY_CODE_MAX_LENGTH_MESSAGE = "countryCode should not be more than "
             + MAX_ALLOWED_COUNTRY_CODE_LENGTH + " char";
     public static final String USER_DETAILS_REGISTER_SUCCESS_MESSAGE = "User Details Registered Successfully";
+    public static final String USER_REGISTER_FOR_VACCINATION_SUCCESS_MESSAGE = "User Registered for Vaccination Successfully";
     public static final String USER_DETAILS_UPDATE_SUCCESS_MESSAGE = "User Details Updated Successfully";
     public static final String FETCH_USER_DETAILS_SUCCESS_MESSAGE = "User Details Fetched Successfully";
     public static final String FETCH_USER_DETAILS_FAILED = "No Details found for given Aadhar : ";
+
+    public static final int MAX_ALLOWED_VACCINE_NAME_LENGTH = 30;
+    public static final int MAX_ALLOWED_HOSPITAL_NAME_LENGTH = 40;
+
+    public static final String VACCINE_NAME_MAX_LENGTH_MESSAGE = "vaccineName should not be more than "
+            + MAX_ALLOWED_VACCINE_NAME_LENGTH + " char";
+    public static final String HOSPITAL_NAME_MAX_LENGTH_MESSAGE = "hospitalName should not be more than "
+            + MAX_ALLOWED_HOSPITAL_NAME_LENGTH + " char";
+
+    public static final String HOSPITAL_PINCODE_STATUS_MANDATORY = "hospitalPincode is Mandatory";
 
 }

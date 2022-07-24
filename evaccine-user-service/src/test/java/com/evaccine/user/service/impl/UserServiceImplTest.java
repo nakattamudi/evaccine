@@ -5,6 +5,7 @@ import static com.evaccine.user.constants.UserServiceConstants.FETCH_USER_DETAIL
 import static com.evaccine.user.constants.UserServiceConstants.FETCH_USER_DETAILS_SUCCESS_MESSAGE;
 import static com.evaccine.user.constants.UserServiceConstants.USER_DETAILS_REGISTER_SUCCESS_MESSAGE;
 import static com.evaccine.user.constants.UserServiceConstants.USER_DETAILS_UPDATE_SUCCESS_MESSAGE;
+import static com.evaccine.user.constants.UserServiceConstants.USER_REGISTER_FOR_VACCINATION_SUCCESS_MESSAGE;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
@@ -12,6 +13,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import com.evaccine.user.entity.UserEntity;
@@ -20,6 +22,7 @@ import com.evaccine.user.model.GenderType;
 import com.evaccine.user.model.UserRegisterRequest;
 import com.evaccine.user.model.UserRegisterResponse;
 import com.evaccine.user.model.UserVaccineInfoResponse;
+import com.evaccine.user.model.VaccineRegisterRequest;
 import com.evaccine.user.repository.UserEntityRepository;
 import com.evaccine.user.repository.VaccineInfoRepository;
 import com.evaccine.user.validator.UserServiceValidator;
@@ -129,6 +132,24 @@ public class UserServiceImplTest {
         verify(vaccineInfoRepository, times(1)).findByHospitalPincodeAndCountryCode(any(String.class),
                 any(String.class));
         verify(vaccineInfoRepository, times(0)).save(any(VaccineInfoEntity.class));
+    }
+
+
+    @Test
+    public void vaccineRegisterRequestWithValidEntry() {
+
+        VaccineRegisterRequest vaccineRegisterRequest = VaccineRegisterRequest.builder()
+                .aadharNumber("878666543121")
+                .countryCode("IND")
+                .dosageNumber(1)
+                .hospitalPincode("1233")
+                .vaccineRegistrationDate(LocalDateTime.now())
+                .vaccineName("FIZER")
+                .build();
+
+        UserRegisterResponse vaccineInfoResponse = userServiceImpl.vaccineRegisterRequest(vaccineRegisterRequest);
+        assertThat(vaccineInfoResponse).isNotNull();
+        assertEquals(vaccineInfoResponse.getMessage(), USER_REGISTER_FOR_VACCINATION_SUCCESS_MESSAGE);
     }
 
 }
