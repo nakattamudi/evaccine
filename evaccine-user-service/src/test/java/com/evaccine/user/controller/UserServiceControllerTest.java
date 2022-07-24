@@ -12,9 +12,13 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.evaccine.user.TestUtil;
 import com.evaccine.user.model.UserRegisterRequest;
 import com.evaccine.user.model.UserRegisterResponse;
+import com.evaccine.user.model.UserVaccineInfoResponse;
 import com.evaccine.user.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,6 +75,17 @@ public class UserServiceControllerTest {
                         .string("{\"message\":\"User Details Updated Successfully\",\"httpStatus\":\"OK\"}"));
     }
 
+    @Test
+    @WithMockUser
+    public void fetchVaccineInfo() throws Exception {
+        mockFetchVaccineInfoResponseForValidData();
+        mockMvc.perform(get("/user/fetch/vaccine_info/IND/1233").with(csrf())).andExpect(status().is2xxSuccessful())
+                .andExpect(content()
+                        .string("[{\"vaccineName\":\"COVAXIN\",\"hospitalName\":\"ICON\",\"hospitalPincode\":\"1233\","
+                                + "\"countryCode\":\"IND\"},{\"vaccineName\":\"FIZER\",\"hospitalName\":\"ICON\","
+                                + "\"hospitalPincode\":\"1233\",\"countryCode\":\"IND\"}]"));
+    }
+
     private void mockRegisterUserInfoResponseForValidData() {
         UserRegisterResponse userRegisterResponse = new UserRegisterResponse();
         userRegisterResponse.setMessage(USER_DETAILS_REGISTER_SUCCESS_MESSAGE);
@@ -91,6 +106,26 @@ public class UserServiceControllerTest {
         userRegisterResponse.setMessage(FETCH_USER_DETAILS_SUCCESS_MESSAGE);
         userRegisterResponse.setHttpStatus(HttpStatus.OK);
         when(userService.getUserDetails(any(String.class))).thenReturn(userRegisterResponse);
+    }
+
+    private void mockFetchVaccineInfoResponseForValidData() {
+        List<UserVaccineInfoResponse> vaccineInfoResponseList = new ArrayList<>();
+        UserVaccineInfoResponse vaccineInfoResponse = new UserVaccineInfoResponse();
+
+        vaccineInfoResponse.setCountryCode("IND");
+        vaccineInfoResponse.setHospitalPincode("1233");
+        vaccineInfoResponse.setVaccineName("COVAXIN");
+        vaccineInfoResponse.setHospitalName("ICON");
+
+        UserVaccineInfoResponse vaccineInfoResponse2 = new UserVaccineInfoResponse();
+        vaccineInfoResponse2.setCountryCode("IND");
+        vaccineInfoResponse2.setHospitalPincode("1233");
+        vaccineInfoResponse2.setVaccineName("FIZER");
+        vaccineInfoResponse2.setHospitalName("ICON");
+
+        vaccineInfoResponseList.add(vaccineInfoResponse);
+        vaccineInfoResponseList.add(vaccineInfoResponse2);
+        when(userService.fetchVaccineInfo(any(String.class), any(String.class))).thenReturn(vaccineInfoResponseList);
     }
 
 }

@@ -1,24 +1,34 @@
 package com.evaccine.user.service.impl;
 
+import static com.evaccine.user.constants.UserServiceConstants.COUNTRY_CODE_MANDATORY;
 import static com.evaccine.user.constants.UserServiceConstants.FETCH_USER_DETAILS_FAILED;
 import static com.evaccine.user.constants.UserServiceConstants.FETCH_USER_DETAILS_SUCCESS_MESSAGE;
+import static com.evaccine.user.constants.UserServiceConstants.PIN_CODE_MANDATORY;
 import static com.evaccine.user.constants.UserServiceConstants.USER;
 import static com.evaccine.user.constants.UserServiceConstants.USER_DETAILS_REGISTER_SUCCESS_MESSAGE;
 import static com.evaccine.user.constants.UserServiceConstants.USER_DETAILS_UPDATE_SUCCESS_MESSAGE;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.evaccine.user.entity.UserEntity;
+import com.evaccine.user.entity.VaccineInfoEntity;
 import com.evaccine.user.model.UserRegisterRequest;
 import com.evaccine.user.model.UserRegisterResponse;
+import com.evaccine.user.model.UserVaccineInfoResponse;
 import com.evaccine.user.repository.UserEntityRepository;
+import com.evaccine.user.repository.VaccineInfoRepository;
 import com.evaccine.user.service.UserService;
 import com.evaccine.user.validator.UserServiceValidator;
+import io.micrometer.core.instrument.util.StringUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
+import org.springframework.util.CollectionUtils;
 
 @Service
 @Slf4j
@@ -29,6 +39,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserEntityRepository userEntityRepository;
+
+    @Autowired
+    private VaccineInfoRepository vaccineInfoRepository;
 
     @Override
     public UserRegisterResponse registerUserDetails(final UserRegisterRequest userDetailsRequest) {
@@ -70,6 +83,28 @@ public class UserServiceImpl implements UserService {
         userRegisterResponse.setHttpStatus(HttpStatus.OK);
         userRegisterResponse.setMessage(USER_DETAILS_UPDATE_SUCCESS_MESSAGE);
         return userRegisterResponse;
+    }
+
+    @Override
+    public List<UserVaccineInfoResponse> fetchVaccineInfo(final String countryCode, final String pincode) {
+        log.info("fetchVaccineInfo Request Received for :{}", countryCode);
+        Assert.isTrue(StringUtils.isNotBlank(countryCode), COUNTRY_CODE_MANDATORY);
+        Assert.isTrue(StringUtils.isNotBlank(pincode), PIN_CODE_MANDATORY);
+
+        List<VaccineInfoEntity> vaccineInfoEntityList = vaccineInfoRepository
+                .findByHospitalPincodeAndCountryCode(pincode, countryCode);
+
+        List<UserVaccineInfoResponse> vaccineInfoResponseList = new ArrayList<>();
+        if (!CollectionUtils.isEmpty(vaccineInfoEntityList)) {
+            for (VaccineInfoEntity vaccineInfoEntity : vaccineInfoEntityList) {
+                UserVaccineInfoResponse vaccineInfoResponse = new UserVaccineInfoResponse();
+                BeanUtils.copyProperties(vaccineInfoEntity, vaccineInfoResponse);
+                vaccineInfoResponseList.add(vaccineInfoResponse);
+            }
+        } else {
+            log.info("No Details found for given countryCode {} and pincode {}:", countryCode, pincode);
+        }
+        return vaccineInfoResponseList;
     }
 
 

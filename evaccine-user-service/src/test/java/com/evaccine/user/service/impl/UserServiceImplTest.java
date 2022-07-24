@@ -12,11 +12,16 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.List;
+
 import com.evaccine.user.entity.UserEntity;
+import com.evaccine.user.entity.VaccineInfoEntity;
 import com.evaccine.user.model.GenderType;
 import com.evaccine.user.model.UserRegisterRequest;
 import com.evaccine.user.model.UserRegisterResponse;
+import com.evaccine.user.model.UserVaccineInfoResponse;
 import com.evaccine.user.repository.UserEntityRepository;
+import com.evaccine.user.repository.VaccineInfoRepository;
 import com.evaccine.user.validator.UserServiceValidator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -33,6 +38,9 @@ public class UserServiceImplTest {
     private UserServiceValidator userServiceValidator;
     @Mock
     private UserEntityRepository userEntityRepository;
+
+    @Mock
+    private VaccineInfoRepository vaccineInfoRepository;
 
     @Test
     public void registerUserDetailsTest() {
@@ -91,4 +99,36 @@ public class UserServiceImplTest {
         verify(userEntityRepository, times(1)).findByAadharNumber(any(String.class));
         verify(userEntityRepository, times(0)).save(any(UserEntity.class));
     }
+
+    @Test
+    public void fetchVaccineInfoWithValidEntry() {
+
+        String countryCode = "NZE";
+        String pincode = "2133";
+        VaccineInfoEntity vaccineInfoEntity = new VaccineInfoEntity();
+        when(vaccineInfoRepository.findByHospitalPincodeAndCountryCode(any(String.class), any(String.class)))
+                .thenReturn(List.of(vaccineInfoEntity));
+        List<UserVaccineInfoResponse> vaccineInfoResponseList = userServiceImpl.fetchVaccineInfo(countryCode, pincode);
+
+        assertThat(vaccineInfoResponseList).isNotEmpty();
+        verify(vaccineInfoRepository, times(1)).findByHospitalPincodeAndCountryCode(any(String.class),
+                any(String.class));
+        verify(vaccineInfoRepository, times(0)).save(any(VaccineInfoEntity.class));
+    }
+
+    @Test
+    public void fetchVaccineInfoWithInValidEntry() {
+
+        String countryCode = "NZE";
+        String pincode = "2133";
+        when(vaccineInfoRepository.findByHospitalPincodeAndCountryCode(any(String.class), any(String.class)))
+                .thenReturn(null);
+        List<UserVaccineInfoResponse> vaccineInfoResponseList = userServiceImpl.fetchVaccineInfo(countryCode, pincode);
+
+        assertThat(vaccineInfoResponseList).isEmpty();
+        verify(vaccineInfoRepository, times(1)).findByHospitalPincodeAndCountryCode(any(String.class),
+                any(String.class));
+        verify(vaccineInfoRepository, times(0)).save(any(VaccineInfoEntity.class));
+    }
+
 }
