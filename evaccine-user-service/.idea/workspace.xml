@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2a8787ca-696c-4107-a418-53833fb327f5" name="Changes" comment="User vaccine registration changes">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/evaccine/user/model/UserRegisterRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evaccine/user/model/UserRegisterRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/evaccine/user/service/impl/UserServiceImplTest.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageOptionsProvider">
+    <option name="myAddOrReplace" value="1" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/test/java/com/evaccine/user/controller/UserServiceControllerTest.java" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="flattenPackages" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="false" />
+  </component>
+  <component name="RunManager" selected="JUnit.UserServiceValidatorTest.validateVaccineRegisterRequestWithValidEntry">
+    <configuration name="UserServiceValidatorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="evaccine-user-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.evaccine.user.validator.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.evaccine.user.validator" />
+      <option name="MAIN_CLASS_NAME" value="com.evaccine.user.validator.UserServiceValidatorTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceValidatorTest.validateVaccineRegisterRequestWithEmptyDosageCount" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="evaccine-user-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.evaccine.user.validator.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.evaccine.user.validator" />
+      <option name="MAIN_CLASS_NAME" value="com.evaccine.user.validator.UserServiceValidatorTest" />
+      <option name="METHOD_NAME" value="validateVaccineRegisterRequestWithEmptyDosageCount" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceValidatorTest.validateVaccineRegisterRequestWithEmptyHospitalName" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="evaccine-user-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.evaccine.user.validator.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.evaccine.user.validator" />
+      <option name="MAIN_CLASS_NAME" value="com.evaccine.user.validator.UserServiceValidatorTest" />
+      <option name="METHOD_NAME" value="validateVaccineRegisterRequestWithEmptyHospitalName" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceValidatorTest.validateVaccineRegisterRequestWithExceedingMaxHospitalNameLength" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="evaccine-user-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.evaccine.user.validator.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.evaccine.user.validator" />
+      <option name="MAIN_CLASS_NAME" value="com.evaccine.user.validator.UserServiceValidatorTest" />
+      <option name="METHOD_NAME" value="validateVaccineRegisterRequestWithExceedingMaxHospitalNameLength" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceValidatorTest.validateVaccineRegisterRequestWithValidEntry" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="evaccine-user-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.evaccine.user.validator.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.evaccine.user.validator" />
+      <option name="MAIN_CLASS_NAME" value="com.evaccine.user.validator.UserServiceValidatorTest" />
+      <option name="METHOD_NAME" value="validateVaccineRegisterRequestWithValidEntry" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.UserServiceValidatorTest" />
+      <item itemvalue="JUnit.UserServiceValidatorTest.validateVaccineRegisterRequestWithEmptyDosageCount" />
+      <item itemvalue="JUnit.UserServiceValidatorTest.validateVaccineRegisterRequestWithEmptyHospitalName" />
+      <item itemvalue="JUnit.UserServiceValidatorTest.validateVaccineRegisterRequestWithExceedingMaxHospitalNameLength" />
+      <item itemvalue="JUnit.UserServiceValidatorTest.validateVaccineRegisterRequestWithValidEntry" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.UserServiceValidatorTest.validateVaccineRegisterRequestWithValidEntry" />
+        <item itemvalue="JUnit.UserServiceValidatorTest.validateVaccineRegisterRequestWithEmptyDosageCount" />
+        <item itemvalue="JUnit.UserServiceValidatorTest" />
+        <item itemvalue="JUnit.UserServiceValidatorTest.validateVaccineRegisterRequestWithExceedingMaxHospitalNameLength" />
+        <item itemvalue="JUnit.UserServiceValidatorTest.validateVaccineRegisterRequestWithEmptyHospitalName" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TaskManager">
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="User vaccine registration changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="User vaccine registration changes" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/evaccine_user_service$All_in_evaccine_user_service__1_.ic" NAME="All in evaccine-user-service (1) Coverage Results" MODIFIED="1658672463030" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/evaccine_user_service$UserServiceImplTest.ic" NAME="UserServiceImplTest Coverage Results" MODIFIED="1658586694602" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.evaccine.user.service.impl.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/evaccine_user_service$UserServiceImplTest_updateUserDetailsTest.ic" NAME="UserServiceImplTest.updateUserDetailsTest Coverage Results" MODIFIED="1658586666447" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.evaccine.user.service.impl.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/evaccine_user_service$All_in_evaccine_user_service.ic" NAME="All in evaccine-user-service Coverage Results" MODIFIED="1658676520133" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/evaccine_user_service$UserServiceImplTest_registerUserDetailsTest.ic" NAME="UserServiceImplTest.registerUserDetailsTest Coverage Results" MODIFIED="1658586633608" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.evaccine.user.service.impl.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/evaccine_user_service$UserServiceValidatorTest.ic" NAME="UserServiceValidatorTest Coverage Results" MODIFIED="1658677698673" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.evaccine.user.validator.*</FILTER>
+    </SUITE>
+  </component>
+</project>
