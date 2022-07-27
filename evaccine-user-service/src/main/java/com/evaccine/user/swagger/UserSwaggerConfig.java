@@ -15,7 +15,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 public class UserSwaggerConfig {
 
     private ApiInfo apiInfo() {
-        return new ApiInfo("Admin Service Rest APIs", "APIs for Admin Service.", "1.0", "Terms of service",
+        return new ApiInfo("User Service Rest APIs", "APIs for User Service.", "1.0", "Terms of service",
                 new Contact("venu", "www.google.com", "venu@swaggeradmin.com"), "License of API", "API license URL",
                 Collections.emptyList());
     }
